@@ -4,7 +4,20 @@
 > Every change must pass the checklist below before commit.
 >
 > **Standalone repository** at `https://github.com/dogmalab/dogma-gateway`.
-> Part of the Dogma ecosystem — works alongside `dogma-agent` and `dogma-vdb`.
+> Part of the [Dogma](https://github.com/dogmalab/.github) platform — works
+> alongside `dogma-agent` and `dogma-vdb`.
+
+This document contains the **harness-specific** rules for working on
+`dogma-gateway`. The general rules of the platform — the Four
+Questions, the contribution process, the security reporting flow —
+live in the org-level
+[CONTRIBUTING.md](https://github.com/dogmalab/.github/blob/main/CONTRIBUTING.md).
+The why behind these rules is in the
+[MANIFESTO.md](https://github.com/dogmalab/.github/blob/main/MANIFESTO.md).
+
+If a rule from this file conflicts with a rule from the org-level
+docs, the org-level docs win. If a rule here is missing from the
+org-level docs, that is a bug — open an issue to fix it.
 
 ---
 

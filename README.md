@@ -1,9 +1,31 @@
-# dogma-gateway (v1)
+# dogma-gateway
 
-> **Edge proxy & syntactic/semantic customs for the Dogma ecosystem.**
-> Low-latency reverse proxy protecting `dogma-agent` (v2) from direct network
-> exposure and bridging HTTP/SSE clients with `dogma-vdb` (v1) via
-> memory-mapped I/O.
+> The network harness of the [Dogma](https://github.com/dogmalab/.github) platform.
+> The only network listener. Bridges HTTP clients to the air-gapped core via
+> IPC pipes and mmap. Stateless. Tiny binary.
+
+**Read first:** the [Dogma Manifesto](https://github.com/dogmalab/.github/blob/main/MANIFESTO.md)
+explains why this exists and what it is for. This document is the
+network-harness-specific README.
+
+---
+
+## What dogma-gateway is
+
+`dogma-gateway` is the **network harness** of the Dogma platform. It
+is a standalone binary crate that runs as an HTTP server with three
+responsibilities:
+
+1. **REST ingress** with strict JSON validation
+   (`#[serde(deny_unknown_fields)]`).
+2. **SSE streaming proxy** that bridges HTTP clients to
+   `dogma-agent` via anonymous OS pipes (stdin/stdout).
+3. **RAG orchestrator** that combines a local vector search against
+   `dogma-vdb` (mmap) with an LLM inference call to the agent.
+
+The gateway has **no access to system shells**, **no local session
+storage**, and **no reasoning loop**. It is a pure routing and
+validation layer — the network boundary of the air-gapped core.
 
 ---
 
